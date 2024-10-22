@@ -1,0 +1,27 @@
+::ng-deep app-current-weather {
+    mat-card {
+        background: transparent !important;
+        color: #fff;
+        box-shadow: none !important;
+
+        mat-card-content {
+            .primary-content {
+                line-height: 55px;
+            }
+
+            .current-temp {
+                font-size: 50px;
+                font-weight: 600px;
+            }
+
+            .place {
+                font-size: 25px;
+            }
+
+            .secondary-content {
+                line-height: 30px;
+                font-size: 20px;
+            }
+        }
+    }
+}

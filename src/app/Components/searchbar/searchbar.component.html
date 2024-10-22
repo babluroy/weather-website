@@ -1,0 +1,13 @@
+<form class="searchbar-form">
+  <mat-form-field class="searchbar-full">
+    <mat-label>Search Place</mat-label>
+    <input matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Enter place"
+      class="search-bar-input">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onLocationSelected($event)"
+      [displayWith]="displayLocation">
+      <mat-option *ngFor="let location of locations" [value]="location">
+        {{location.name}}, {{location.country}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

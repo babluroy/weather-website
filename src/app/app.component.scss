@@ -1,0 +1,17 @@
+::ng-deep app-root{
+    .main-section{
+        background-color: #07173f;
+        padding: 65px 0 110px 0;
+        text-align: center;
+        
+        .weather-cover-img{
+            height: 150px;
+        }
+        .current-weather-container{
+            margin-bottom: 10px;
+        }
+    }
+    .forecast-container{
+        margin-top: 30px;
+    }  
+}

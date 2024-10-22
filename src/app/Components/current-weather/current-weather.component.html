@@ -1,0 +1,21 @@
+<ng-container *ngIf="currentWeather && location">
+  <mat-card class="p-4">
+    <mat-card-title class="text-xl mb-4">
+      <img [src]="currentWeather.condition.icon" [alt]="currentWeather.condition.text">
+    </mat-card-title>
+    <mat-card-content>
+      <div class="flex items-center justify-between primary-content">
+        <div class="current-temp">{{currentWeather.temp_c}}°C</div>
+        <div class="place">{{location.name}}, {{location.country}}</div>
+      </div>
+      <div class="mt-5 grid grid-cols-2 gap-4 secondary-content">
+        <div>
+          <div class="text-gray-600">Wind: {{currentWeather.wind_kph}} km/h</div>
+        </div>
+        <div>
+          <div class="text-gray-600">Humidity: {{currentWeather.humidity}}%</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

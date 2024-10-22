@@ -1,0 +1,19 @@
+<div class="row g-4 forcast-container">
+  <div class="col-12 col-md-4" *ngFor="let day of forecastDays">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="date-field">{{day.date | date}}</div>
+        <div class="text-end">
+          <img [src]="day.day.condition.icon" [alt]="day.day.condition.text">
+        </div>
+        <div class="temp-variation">
+          <div>Max: {{day.day.maxtemp_c}}°C</div>
+          <div>Min: {{day.day.mintemp_c}}°C</div>
+        </div>
+        <div class="forcast-conclusion mt-2">
+          {{day.day.condition.text}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

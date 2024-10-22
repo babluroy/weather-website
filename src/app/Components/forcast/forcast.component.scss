@@ -1,0 +1,44 @@
+::ng-deep app-forcast {
+    .forcast-container {
+        display: flex;
+        justify-content: space-around;
+
+        .card {
+            background-color: #faebd7;
+            padding: 40px 80px;
+            text-align: center;
+            border-radius: 12px;
+            min-height: 180px;
+
+            .card-body {
+                .date-field {
+                    margin-bottom: 10px;
+                }
+
+                .temp-variation {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 180px;
+                    font-size: 18px;
+                    font-weight: 550px;
+                }
+
+                .forcast-conclusion {
+                    font-size: 25px;
+                    color: #6b6b6b;
+                    margin-top: 10px;
+                }
+            }
+        }
+
+    }
+    @media screen and (max-width: 1080px) {
+        .forcast-container {
+            flex-direction: column;
+            align-items: center;
+            .card{
+              margin: 0 10px 15px 5px;
+            }
+        }
+    }
+}

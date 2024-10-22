@@ -1,0 +1,12 @@
+::ng-deep app-searchbar {
+    .searchbar-full {
+        width: 500px;
+    }
+
+    @media screen and (max-width: 512px) {
+        .searchbar-full {
+            width: -webkit-fill-available;
+            margin: 0px 40px;
+        }
+    }
+}
