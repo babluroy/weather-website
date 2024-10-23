@@ -3,8 +3,9 @@
 ### Objective
 This project is an interactive weather dashboard built using Angular. It allows users to search for and display the current weather conditions and the forecast for the next three days for any chosen location.
 
-## Demo Link
-https://htn.com
+## Screenshot
+![Preview](https://github.com/babluroy/weather-website/blob/main/public/img/ss.png?raw=true)
+
 
 ### Core Features
 **Location Search:** Users can search by city or zip code to retrieve weather information for the selected location.
