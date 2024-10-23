@@ -1,27 +1,64 @@
-# Weather
+# Angular Interview Assignment: Weather Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+### Objective
+This project is an interactive weather dashboard built using Angular. It allows users to search for and display the current weather conditions and the forecast for the next three days for any chosen location.
 
-## Development server
+## Demo Link
+https://htn.com
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Core Features
+**Location Search:** Users can search by city or zip code to retrieve weather information for the selected location.
+API: http://api.weatherapi.com/v1/search.json
 
-## Code scaffolding
+**Current Weather Display:** Displays the current weather including temperature, wind speed, humidity, and an icon representing the weather condition.
+API: http://api.weatherapi.com/v1/current.json
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**3-Day Forecast:** Provides a three day weather forecast with high/low temperatures, weather descriptions, and icons for each day.
+API: http://api.weatherapi.com/v1/forecast.json
 
-## Build
+**Responsive Design:** Optimized for both desktop and mobile devices.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Technology Stack
 
-## Running unit tests
+**Framework:** Angular (v18) 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Styling:** SCSS
 
-## Running end-to-end tests
+**CSS Framework:** Bootstrap
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Component Library:** Angular Material
 
-## Further help
+## Installation
+1. Clone the repository:
+git clone https://github.com/babluroy/weather-website.git
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. Install dependencies:
+npm install
+
+3. Run the development server:
+ng serve
+Visit http://localhost:4200 to view It.
+
+## Architecture Overview
+
+**HttpInterceptor:** Intercepts HTTP requests to automatically append the API key to every outgoing request to the WeatherAPI.
+
+**SearchbarComponent:** Handles input for searching locations.
+
+**CurrentWeatherComponent:** Displays current weather data.
+
+**ForecastComponent:** Shows the 3 day weather forecast.
+
+**LoaderComponent:** A reusable loader.
+
+**WeatherService:** WeatherAPI API calls service file for data fetching.
+
+## Key Angular Features:
+**Services:** WeatherService handles all API calls and data retrieval.
+
+**Reactive Forms:** The location search uses Reactive Forms for data binding.
+
+SCSS: Custom styles using SCSS with media queries for responsive design.
+Deployment
+
+**RxJS:** RxJS is used to manage asynchronous data streams.

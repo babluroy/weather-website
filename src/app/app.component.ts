@@ -36,7 +36,7 @@ export class AppComponent {
  * retrives current location of the user & calls weather API's
  */
   getCurrentLocation() {
-    if (navigator.geolocation) {
+    if (window?.navigator?.geolocation) {
       this.isGpsAccess = true
       navigator.geolocation.getCurrentPosition(
         (position) => {
