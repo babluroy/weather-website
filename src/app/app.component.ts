@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SearchbarComponent } from "./Components/searchbar/searchbar.component";
 import { WeatherService } from './services/weather.service';
@@ -25,7 +26,8 @@ export class AppComponent {
 
   constructor(
     private weatherService: WeatherService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.getCurrentLocation();
   }
@@ -36,20 +38,22 @@ export class AppComponent {
  * retrives current location of the user & calls weather API's
  */
   getCurrentLocation() {
-    if (navigator.geolocation) {
-      this.isGpsAccess = true
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const location = {lat: position.coords.latitude, lon: position.coords.longitude}
-          this.onLocationSelected(location)
-        },
-        (error) => {
-          this.isGpsAccess = false;
-          this.commonService.showToaster('Error getting location', error?.message, false)
-        }
-      );
-    } else {
-      this.isGpsAccess = false;
+    if (isPlatformBrowser(this.platformId)) {
+      if (navigator.geolocation) {
+        this.isGpsAccess = true
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const location = {lat: position.coords.latitude, lon: position.coords.longitude}
+            this.onLocationSelected(location)
+          },
+          (error) => {
+            this.isGpsAccess = false;
+            this.commonService.showToaster('Error getting location', error?.message, false)
+          }
+        );
+      } else {
+        this.isGpsAccess = false;
+      }
     }
   }
 
