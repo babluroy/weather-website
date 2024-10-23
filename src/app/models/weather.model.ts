@@ -59,3 +59,8 @@ export interface WeatherForecast {
     forecastday: ForecastDay[];
   };
 }
+
+export interface Cordinates {
+  lat: number,
+  lon: number
+}

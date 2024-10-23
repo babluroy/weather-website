@@ -28,6 +28,7 @@ export class SearchbarComponent {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
+    // On location field input calls search place API and has 5 seconds debounce
     this.searchControl.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -51,16 +52,26 @@ export class SearchbarComponent {
     });
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
+/**
+ * @name onLocationSelected
+ * @description
+ * on location selected emit the selected place data
+ */
   onLocationSelected(event: any) {
     this.locationSelected.emit(event.option.value);
   }
 
+/**
+ * @name displayLocation
+ * @description
+ * displays the location in a format
+ */
   displayLocation(location: Location): string {
     return location ? `${location.name}, ${location.country}` : '';
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

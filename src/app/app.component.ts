@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SearchbarComponent } from "./Components/searchbar/searchbar.component";
 import { WeatherService } from './services/weather.service';
-import { WeatherForecast, CurrentWeather } from './models/weather.model';
+import { WeatherForecast, CurrentWeather, Cordinates } from './models/weather.model';
 import { CurrentWeatherComponent } from "./Components/current-weather/current-weather.component";
 import { ForcastComponent } from './Components/forcast/forcast.component';
 import { CommonService } from './services/common.service';
@@ -30,6 +30,11 @@ export class AppComponent {
     this.getCurrentLocation();
   }
 
+/**
+ * @name getCurrentLocation
+ * @description
+ * retrives current location of the user & calls weather API's
+ */
   getCurrentLocation() {
     if (navigator.geolocation) {
       this.isGpsAccess = true
@@ -40,7 +45,7 @@ export class AppComponent {
         },
         (error) => {
           this.isGpsAccess = false;
-          this.commonService.showToaster('Error getting location', error, false)
+          this.commonService.showToaster('Error getting location', error?.message, false)
         }
       );
     } else {
@@ -48,14 +53,26 @@ export class AppComponent {
     }
   }
 
-  onLocationSelected(location:any) {
+/**
+ * @name onLocationSelected
+ * @description
+ * on location selection calls getCurrentWeather & getForcast functions
+ * @param location
+ */
+  onLocationSelected(location:Cordinates) {
     if(location){
       this.getCurrentWeather(location);
       this.getForcast(location);
     }
   }
 
-  getCurrentWeather(location:any){
+/**
+ * @name getCurrentWeather
+ * @description
+ * calls API to get current weather data of particular location
+ * @param location
+ */
+  getCurrentWeather(location:Cordinates){
     this.isCurrentWeatherLoading = true;
     this.weatherService.getCurrentWeather(`${location?.lat},${location?.lon}`)
     .subscribe((data) => {
@@ -64,7 +81,13 @@ export class AppComponent {
     });
   }
 
-  getForcast(location:any){
+/**
+ * @name getForcast
+ * @description
+ * calls API to get forcast of 3 days of particular location
+ * @param location
+ */
+  getForcast(location:Cordinates){
     this.isForcastLoading = true;
     this.weatherService.getWeatherForecast(`${location?.lat},${location?.lon}`)
       .subscribe(data => {

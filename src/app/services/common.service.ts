@@ -11,6 +11,12 @@ export class CommonService {
   ) {}
 
 
+/**
+ * @name showToaster
+ * @description
+ * shows toaster message
+ * @param {Title, message, isSuccess} query - searched term
+ */
   showToaster(title:any, message:any, isSuccess:boolean){
     if(isSuccess){
         this.toastr.success(title, message);
